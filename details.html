@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Details – Pascale & Mazen</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: cursive;
+      background-color: rgb(192, 178, 178);
+      color: #2c2020;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BANNER ── */
+    .banner {
+      background-color: #5a3e3e;
+      color: #f5eded;
+      text-align: center;
+      padding: 50px 20px 40px;
+    }
+
+    .banner h1 {
+      font-size: clamp(28px, 7vw, 48px);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .banner p {
+      font-size: clamp(14px, 3.5vw, 18px);
+      opacity: 0.85;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #c0b2b2, #a08080, #c0b2b2);
+    }
+
+    /* ── CARDS CONTAINER ── */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #f5eded;
+      border-radius: 16px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 4px 18px rgba(90,62,62,0.13);
+      text-align: center;
+    }
+
+    .card .icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+    }
+
+    .card h2 {
+      font-size: clamp(18px, 4.5vw, 22px);
+      color: #5a3e3e;
+      margin-bottom: 14px;
+      border-bottom: 2px solid rgb(192,178,178);
+      padding-bottom: 10px;
+    }
+
+    .card p {
+      font-size: clamp(14px, 3.5vw, 16px);
+      line-height: 1.8;
+      color: #4a3030;
+    }
+
+    .card .highlight {
+      font-size: clamp(20px, 5vw, 26px);
+      font-weight: bold;
+      color: #5a3e3e;
+      margin: 8px 0;
+    }
+
+    /* ── MAP ── */
+    .map-wrapper {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+    }
+
+    .map-wrapper h2 {
+      text-align: center;
+      font-size: clamp(18px, 4.5vw, 24px);
+      color: #5a3e3e;
+      margin-bottom: 16px;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(90,62,62,0.15);
+    }
+
+    /* ── BACK BUTTON ── */
+    .back-wrap {
+      text-align: center;
+      padding: 10px 20px 50px;
+    }
+
+    .btn-back {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #5a3e3e;
+      color: #f5eded;
+      text-decoration: none;
+      border-radius: 50px;
+      font-family: cursive;
+      font-size: clamp(14px, 3.5vw, 16px);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-back:hover {
+      transform: scale(1.08);
+      background: #3e2828;
+    }
+
+    @media (max-width: 480px) {
+      .card { max-width: 100%; }
+      .map-wrapper iframe { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <h1>Pascale & Mazen</h1>
+    <p>Wedding Details</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="cards">
+
+    <!-- DATE -->
+    <div class="card">
+      <div class="icon">📅</div>
+      <h2>Date</h2>
+      <div class="highlight">13 March 2033</div>
+      <p>Friday Evening<br>Doors open at 6:00 PM<br>Ceremony begins at 7:00 PM</p>
+    </div>
+
+    <!-- VENUE -->
+    <div class="card">
+      <div class="icon">🏛️</div>
+      <h2>Venue</h2>
+      <div class="highlight">La Jolla Cove Rooftop</div>
+      <p>1155 Coast Blvd<br>La Jolla, CA 92037<br>California, USA</p>
+    </div>
+
+
+
+  </div>
+
+  <!-- MAP -->
+  <div class="map-wrapper">
+    <h2>📍 Location</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.1!2d-117.27327939999999!3d32.849720500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc016f02a2a3b3%3A0x514fd5d9d8db1961!2sLa%20Jolla%20Cove%20Rooftop%20by%20Wedgewood%20Weddings!5e0!3m2!1sen!2sus!4v1700000000000"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div class="back-wrap">
+    <a href="wedding.html" class="btn-back">← Back to Invitation</a>
+  </div>
+
+</body>
+</html>
