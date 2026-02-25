@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pascale & Mazen Wedding</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
       font-family: cursive;
     }
 
-    /* ── HERO ── */
+    /* ── PAGE TOGGLE ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ══════════════════════════════
+       MAIN PAGE
+    ══════════════════════════════ */
     .hero {
       background-image: url('https://i.pinimg.com/1200x/d1/f3/e2/d1f3e237d6c03c5fd4a4ac43f593a7b0.jpg');
       background-size: cover;
@@ -53,7 +56,6 @@
       font-size: clamp(14px, 4vw, 18px);
     }
 
-    /* ── SECTIONS ── */
     .section {
       background-color: rgb(192, 178, 178);
       padding: 40px 20px;
@@ -61,23 +63,16 @@
       overflow: hidden;
     }
 
-    .section h1 {
-      font-size: clamp(20px, 5vw, 32px);
-    }
-
-    .section h2 {
-      font-size: clamp(18px, 5vw, 28px);
-    }
+    .section h1 { font-size: clamp(20px, 5vw, 32px); }
+    .section h2 { font-size: clamp(18px, 5vw, 28px); }
 
     .section img.fixed,
     .section img.movable {
       width: 100%;
       max-width: 700px;
-      margin: 20px 0;
+      margin: 20px auto;
       border-radius: 10px;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .section img.movable {
@@ -86,7 +81,7 @@
 
     .zoomed {
       transform: scale(1.2);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     .section p {
@@ -96,7 +91,6 @@
       line-height: 1.7;
     }
 
-    /* ── BUTTONS ── */
     .btn, .btn2 {
       display: inline-block;
       padding: 12px 24px;
@@ -105,83 +99,240 @@
       transition: transform 0.3s ease;
       font-size: clamp(14px, 3.5vw, 16px);
       font-family: cursive;
+      cursor: pointer;
+      border: none;
     }
 
-    .btn {
-      background: white;
-      color: black;
-      margin-top: 30px;
-    }
+    .btn  { background: white; color: black; margin-top: 30px; }
+    .btn2 { background: black; color: white; margin-top: 15px; }
+    .btn:hover, .btn2:hover { transform: scale(1.1); }
 
-    .btn2 {
-      background: rgb(0, 0, 0);
-      color: white;
-      margin-top: 15px;
-    }
-
-    .btn:hover, .btn2:hover {
-      transform: scale(1.1);
-    }
-
-    /* ── MOBILE TWEAKS ── */
     @media (max-width: 480px) {
-      .hero, .hero2 {
-        min-height: 220px;
-        padding: 30px 15px;
-      }
+      .hero, .hero2 { min-height: 220px; padding: 30px 15px; }
+      .section { padding: 30px 15px; }
+      .section img.movable:hover { transform: none; box-shadow: none; }
+    }
 
-      .section {
-        padding: 30px 15px;
-      }
+    /* ══════════════════════════════
+       DETAILS PAGE
+    ══════════════════════════════ */
+    #details-page {
+      background-color: rgb(192, 178, 178);
+      min-height: 100vh;
+      color: #2c2020;
+    }
 
-      /* Disable zoom on touch (mobile hover = tap, which is weird) */
-      .section img.movable:hover {
-        transform: none;
-        box-shadow: none;
-      }
+    .banner {
+      background-color: #5a3e3e;
+      color: #f5eded;
+      text-align: center;
+      padding: 50px 20px 40px;
+    }
+
+    .banner h1 {
+      font-size: clamp(28px, 7vw, 48px);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .banner p {
+      font-size: clamp(14px, 3.5vw, 18px);
+      opacity: 0.85;
+    }
+
+    .divider {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #c0b2b2, #a08080, #c0b2b2);
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #f5eded;
+      border-radius: 16px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 4px 18px rgba(90,62,62,0.13);
+      text-align: center;
+    }
+
+    .card .icon { font-size: 40px; margin-bottom: 14px; }
+
+    .card h2 {
+      font-size: clamp(18px, 4.5vw, 22px);
+      color: #5a3e3e;
+      margin-bottom: 14px;
+      border-bottom: 2px solid rgb(192,178,178);
+      padding-bottom: 10px;
+    }
+
+    .card p {
+      font-size: clamp(14px, 3.5vw, 16px);
+      line-height: 1.8;
+      color: #4a3030;
+    }
+
+    .card .highlight {
+      font-size: clamp(20px, 5vw, 26px);
+      font-weight: bold;
+      color: #5a3e3e;
+      margin: 8px 0;
+    }
+
+    .map-wrapper {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+    }
+
+    .map-wrapper h2 {
+      text-align: center;
+      font-size: clamp(18px, 4.5vw, 24px);
+      color: #5a3e3e;
+      margin-bottom: 16px;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(90,62,62,0.15);
+    }
+
+    .back-wrap {
+      text-align: center;
+      padding: 10px 20px 50px;
+    }
+
+    .btn-back {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #5a3e3e;
+      color: #f5eded;
+      border-radius: 50px;
+      font-family: cursive;
+      font-size: clamp(14px, 3.5vw, 16px);
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-back:hover {
+      transform: scale(1.08);
+      background: #3e2828;
+    }
+
+    @media (max-width: 480px) {
+      .card { max-width: 100%; }
+      .map-wrapper iframe { height: 220px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <h1>Pascale & Mazen</h1>
-    <p>Are getting married</p>
-    <p><b>13.3.2033</b></p>
+  <!-- ══════════════ MAIN PAGE ══════════════ -->
+  <div id="main-page" class="page active">
+
+    <div class="hero">
+      <h1>Pascale & Mazen</h1>
+      <p>Are getting married</p>
+      <p><b>13.3.2033</b></p>
+    </div>
+
+    <div class="section">
+      <h2>Pascale & Mazen</h2>
+      <img class="fixed" src="https://i.pinimg.com/736x/fb/0b/ea/fb0bea2cf2789968798c74275fe7e719.jpg" alt="Couple photo">
+      <p>
+        We promised to stay together for a lifetime, and we have kept that promise.
+        With every trial that crossed our path, we faced it hand in hand, turning struggles into strength and finding light even in the darkest times.
+        From the very first moment we met, you were the dream that came true, the soul that completes mine. We've been through so much together, and every moment has been a testament to the power of the love between us. You've always been the hand I hold when the light fades, the eyes that see hope in the toughest of times.
+      </p>
+      <p>TODAY, we have reached this moment, stronger than ever, after overcoming everything together.</p>
+      <button class="btn" onclick="showPage('details')">Wedding Details</button>
+    </div>
+
+    <div class="hero2">
+      <h1>You Are Invited</h1>
+      <p>Of course..</p>
+    </div>
+
+    <div class="section">
+      <h2>THE WEDDING</h2>
+      <img class="movable" src="https://i.pinimg.com/1200x/3e/2f/3f/3e2f3f8c7a059103d1047fc0c25d0816.jpg" alt="Wedding photo">
+      <h1>Upload our wedding photos here!</h1>
+      <p>Kindly Respond By March, 2033</p>
+      <button class="btn2">Upload Photos</button>
+    </div>
+
   </div>
 
-  <div class="section">
-    <h2>Pascale & Mazen</h2>
-    <img class="fixed" src="https://i.pinimg.com/736x/fb/0b/ea/fb0bea2cf2789968798c74275fe7e719.jpg" alt="Couple photo">
-    <p>
-      We promised to stay together for a lifetime, and we have kept that promise.
-      With every trial that crossed our path, we faced it hand in hand, turning struggles into strength and finding light even in the darkest times.
-      From the very first moment we met, you were the dream that came true, the soul that completes mine. We've been through so much together, and every moment has been a testament to the power of the love between us. You've always been the hand I hold when the light fades, the eyes that see hope in the toughest of times.
-    </p>
-    <p>TODAY, we have reached this moment, stronger than ever, after overcoming everything together.</p>
-    <a href="details.html" class="btn">Wedding Details</a>
-  </div>
+  <!-- ══════════════ DETAILS PAGE ══════════════ -->
+  <div id="details-page" class="page">
 
-  <div class="hero2">
-    <h1>You Are Invited</h1>
-    <p>Of course..</p>
-  </div>
+    <div class="banner">
+      <h1>Pascale & Mazen</h1>
+      <p>Wedding Details</p>
+    </div>
+    <div class="divider"></div>
 
-  <div class="section">
-    <h2>THE WEDDING</h2>
-    <img class="movable" src="https://i.pinimg.com/1200x/3e/2f/3f/3e2f3f8c7a059103d1047fc0c25d0816.jpg" alt="Wedding photo">
-    <h1>Upload our wedding photos here!</h1>
-    <p>Kindly Respond By March, 2033</p>
-    <a href="#" class="btn2">Upload Photos</a>
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">📅</div>
+        <h2>Date</h2>
+        <div class="highlight">13 March 2033</div>
+        <p>Friday Evening<br>Doors open at 6:00 PM<br>Ceremony begins at 7:00 PM</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🏛️</div>
+        <h2>Venue</h2>
+        <div class="highlight">La Jolla Cove Rooftop</div>
+        <p>1155 Coast Blvd<br>La Jolla, CA 92037<br>California, USA</p>
+      </div>
+
+    </div>
+
+    <div class="map-wrapper">
+      <h2>📍 Location</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.1!2d-117.27327939999999!3d32.849720500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc016f02a2a3b3%3A0x514fd5d9d8db1961!2sLa%20Jolla%20Cove%20Rooftop%20by%20Wedgewood%20Weddings!5e0!3m2!1sen!2sus!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="back-wrap">
+      <button class="btn-back" onclick="showPage('main')">← Back to Invitation</button>
+    </div>
+
   </div>
 
   <script>
-    const images = document.querySelectorAll(".section img.movable");
-    // Only enable zoom on non-touch devices
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(name + '-page').classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    // Zoom on desktop only
     if (!('ontouchstart' in window)) {
-      images.forEach(img => {
+      document.querySelectorAll(".section img.movable").forEach(img => {
         img.addEventListener("mouseover", () => img.classList.add("zoomed"));
-        img.addEventListener("mouseout", () => img.classList.remove("zoomed"));
+        img.addEventListener("mouseout",  () => img.classList.remove("zoomed"));
       });
     }
   </script>
